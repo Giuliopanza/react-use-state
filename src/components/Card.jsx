@@ -34,21 +34,46 @@ const Cards = (props) => {
           description: "ReactJS è una libreria JavaScript per costruire interfacce utente, in particolare applicazioni a pagina singola. Consente agli sviluppatori di creare componenti UI riutilizzabili e di gestire efficacemente lo stato dell'applicazione."
         }
       ];
+
+      const [ isOpen, setIsOpen ] = useState( false );
+      const Switch = () => setIsOpen( !isOpen )
       
+      let classText = ''
     
-        return( 
+        return(
+            <div className="container-80">
             <section className="sec-btn"> 
             {
                    languages.map((element) => {
     
-                    const { id, title, description} = element;
+                    const { id, title,} = element;
     
                         return(
+                            <button key={id} className="accordion__btn" onClick={ Switch } >
+                            { isOpen && classText == 'd-block'}
+                            {title}
+                            </button>
 
                         )
                    })
                 }  
            </section>
+           <section className="sec-text">
+           {
+                   languages.map((element) => {
+    
+                    const { id, description} = element;
+    
+                        return(
+                            <div key={id} className= {{classText } + ' d-none'} >
+                                {description}
+                            </div>
+                        )
+                   })
+                } 
+           </section>
+           </div>
+
         )
     }
     

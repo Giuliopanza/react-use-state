@@ -4,7 +4,7 @@ const Main = (props) => {
     
     return (
     <main>
-        <div className="container-80"></div>
+        <Cards/>
     </main>
 )
     
