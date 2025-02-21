@@ -35,10 +35,8 @@ const Cards = (props) => {
         }
       ];
 
-      const [ isOpen, setIsOpen ] = useState( false );
-      const Switch = () => setIsOpen( !isOpen )
-      
-      let classText = ''
+      const [ classText, setclassText ] = useState( 'd-none' );
+      const onClick = () => {setclassText(classText + ' d-block')}
     
         return(
             <div className="container-80">
@@ -49,8 +47,7 @@ const Cards = (props) => {
                     const { id, title,} = element;
     
                         return(
-                            <button key={id} className="accordion__btn" onClick={ Switch } >
-                            { isOpen && classText == 'd-block'}
+                            <button key={id} className="btn" onClick={ onClick } >
                             {title}
                             </button>
 
@@ -65,7 +62,7 @@ const Cards = (props) => {
                     const { id, description} = element;
     
                         return(
-                            <div key={id} className= {{classText } + ' d-none'} >
+                            <div key={id} className= {classText } >
                                 {description}
                             </div>
                         )
